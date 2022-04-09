@@ -306,5 +306,17 @@ function findElement(arr, func) {
     : arr[0];
 }
 ------------------------------------------------------------------------------
+Q. Check if a value is classified as a boolean primitive. Return true or false.
+
+Boolean primitives are true and false.
+
+A-->
+function booWho(bool) {
+  return typeof bool === "boolean";
+}
+
+// test here
+booWho(null);
+-----------------------------------------------------------------------------
 
 
