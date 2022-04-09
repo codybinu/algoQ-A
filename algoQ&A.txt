@@ -1,3 +1,4 @@
+<--------------------------------Source: FreeCodeCamp-------------------------------->
 Q. The formula to convert from Celsius to Fahrenheit is the temperature in Celsius times 9/5, plus 32.
 
 You are given a variable celsius representing a temperature in Celsius. Use the variable fahrenheit already defined and assign it the Fahrenheit temperature equivalent to the given Celsius temperature. Use the formula mentioned above to help convert the Celsius temperature to Fahrenheit.
@@ -187,4 +188,123 @@ function largestOfFour(arr, finalArr = []) {
     : largestOfFour(arr.slice(1), finalArr.concat(Math.max(...arr[0])))
 }
 -------------------------------------------------------------------------------
-Q. 
+Q. Check if a string (first argument, str) ends with the given target string (second argument, target).
+
+This challenge can be solved with the .endsWith() method, which was introduced in ES2015. But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
+
+A-->
+Solution-1.
+//Declarative Approach//
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+
+  return str.slice(str.length - target.length) === target;
+}
+
+confirmEnding("He has to give me a new name", "name");
+
+Solution-2.
+//(using Regular Expression)//
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+
+  let re = new RegExp(target + "$", "i");
+
+  return re.test(str);
+}
+
+console.log(confirmEnding("Bastian", "n"));
+
+Solution-3.
+function confirmEnding(str, target) {
+  return str.slice(-target.length) === target
+}
+
+confirmEnding("Bastian", "n");
+-----------------------------------------------------------------------------
+Q. Repeat a given string str (first argument) for num times (second argument). Return an empty string if num is not a positive number. For the purpose of this challenge, do not use the built-in .repeat() method.
+
+A-->
+Solution-1.
+function repeatStringNumTimes(str, num) {
+  let accumulatedStr = "";
+
+  for (let i = 0; i < num; i++) {
+    accumulatedStr += str;
+  }
+
+  return accumulatedStr;
+}
+
+Solution-2.
+function repeatStringNumTimes(str, num) {
+  if (num < 1) {
+    return "";
+  } else {
+    return str + repeatStringNumTimes(str, num - 1);
+  }
+}
+
+Solution-3.
+//Recursive Solution//
+function repeatStringNumTimes(str, num) {
+  return num > 0 ? str + repeatStringNumTimes(str, num - 1) : '';
+}
+-------------------------------------------------------------------------------------
+Q. Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
+
+A-->
+Solution-1.
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  } else {
+    return str;
+  }
+}
+
+Solution-2.
+function truncateString(str, num) {
+  return str.length > num ? str.slice(0, num) + "..." : str;
+}
+-------------------------------------------------------------------
+Q. Create a function that looks through an array arr and returns the first element in it that passes a 'truth test'. This means that given an element x, the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined.
+
+A-->
+Solution-1.
+function findElement(arr, func) {
+  let num = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    num = arr[i];
+    if (func(num)) {
+      return num;
+    }
+  }
+
+  return undefined;
+}
+
+Solution-2.
+function findElement(arr, func) {
+  return arr.find(func);
+}
+
+Solution-3.
+function findElement(arr, func) {
+  return arr[arr.map(func).indexOf(true)];
+}
+
+Solution-4.
+//** Recursive Solution**//
+function findElement(arr, func) {
+  return arr.length && !func(arr[0]) 
+    ? findElement(arr.slice(1), func)
+    : arr[0];
+}
+------------------------------------------------------------------------------
+
+
